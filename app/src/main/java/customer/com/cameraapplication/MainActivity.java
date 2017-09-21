@@ -30,15 +30,26 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+
+
         final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.d);
         imageView = (ImageView) findViewById(R.id.img);
         imageView.setImageBitmap(bitmap);
+
+
+
+
+
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 imageView.setImageBitmap(bitmap);
             }
         });
+
+
+
 
 
         findViewById(R.id.java_btn).setOnClickListener(new View.OnClickListener() {
@@ -50,6 +61,10 @@ public class MainActivity extends Activity {
                 Toast.makeText(MainActivity.this, "java 处理bitmap 时间 " + time, Toast.LENGTH_LONG).show();
             }
         });
+
+
+
+
 
         findViewById(R.id.ndk_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +93,9 @@ public class MainActivity extends Activity {
         });
 
 
+
+
+
         findViewById(R.id.ndk_hahajing_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,15 +108,40 @@ public class MainActivity extends Activity {
 
                 final int[] buffer = new int[w * h];
                 bitmap.getPixels(buffer, 0, w, 1, 1, w - 1, h - 1);
-//                int[] ndkImage = NDKImageUtil.toHahajing(buffer, w, h,w/2,h/2,w / 4,2f);
-//                Bitmap rebitmap = Bitmap.createBitmap(ndkImage,w, h, Bitmap.Config.RGB_565);
+                int[] ndkImage = NDKImageUtil.toHahajing(buffer, w, h,w/2,h/2,w / 4,2f);
+                Bitmap rebitmap = Bitmap.createBitmap(ndkImage,w, h, Bitmap.Config.RGB_565);
+
+                imageView.setImageBitmap(rebitmap);
+
+                time = (System.currentTimeMillis() - time);
+
+                Toast.makeText(MainActivity.this, "NDK 处理 hha bitmap 时间 " + time, Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
+
+
+        findViewById(R.id.java_hahajing_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                long time = System.currentTimeMillis();
+
+
+                final int w = bitmap.getWidth();
+                final int h = bitmap.getHeight();
+
+                final int[] buffer = new int[w * h];
+                bitmap.getPixels(buffer, 0, w, 1, 1, w - 1, h - 1);
 
                 Bitmap rebitmap = JavaImageUtil.MagicMirror(bitmap,bitmap.getWidth() );
                 imageView.setImageBitmap(rebitmap);
 
                 time = (System.currentTimeMillis() - time);
 
-                Toast.makeText(MainActivity.this, "NDK 处理 hha bitmap 时间 " + time, Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "java 处理 hha bitmap 时间 " + time, Toast.LENGTH_LONG).show();
 
 
 

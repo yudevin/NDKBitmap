@@ -10,37 +10,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="70dp" />
-    <RelativeLayout
+    <LinearLayout
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="60dp">
         <Button
             android:id="@+id/btn"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="还原" />
         <Button
             android:id="@+id/java_btn"
-            android:layout_toRightOf="@+id/btn"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Java bitmap" />
+            android:layout_weight="1"
+            android:text="Java美白" />
+        <Button
+            android:id="@+id/ndk_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="ndk美白" />
+
+
+        <Button
+            android:id="@+id/java_hahajing_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="java haha bitmap" />
 
         <Button
             android:id="@+id/ndk_hahajing_btn"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/java_btn"
-            android:text="haha bitmap" />
+            android:layout_weight="1"
+            android:text="ndk haha bitmap" />
 
 
-        <Button
-            android:id="@+id/ndk_btn"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:text="ndk bitmap" />
-    </RelativeLayout>
+
+    </LinearLayout>
 
 
 </FrameLayout>
